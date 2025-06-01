@@ -73,8 +73,8 @@ async function main() {
 
 
 
-  const sepoliaContract = new ethers.Contract(SEPOLIA_CONTRACT_ADDRESS, contractABI, sepoliaProvider);
-  const baseContract = new ethers.Contract(BASE_CONTRACT_ADDRESS, contractABI, baseSepoliaProvider);
+  const sepoliaContract = new ethers.Contract(SEPOLIA_CONTRACT_ADDRESS, contractABI, sepoliaWallet);
+  const baseContract = new ethers.Contract(BASE_CONTRACT_ADDRESS, contractABI, baseSepoliaWallet);
 
   console.log('Listening for events...');
 
@@ -122,6 +122,8 @@ async function main() {
     console.log('User:', user);
     console.log('Amount:', ethers.formatEther(amount));
     console.log('Destination Tx Hash:', destinationTxHash);
+    console.log("----------------------------------------------------------------------")
+
   });
 
   sepoliaProvider.on('error', (err: any) => {
@@ -172,6 +174,8 @@ async function main() {
     console.log('User:', user);
     console.log('Amount:', ethers.formatEther(amount));
     console.log('Destination Tx Hash:', destinationTxHash);
+    console.log("----------------------------------------------------------------------")
+
   });
 
   baseSepoliaProvider.on('error', (err: any) => {
